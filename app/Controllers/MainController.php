@@ -30,9 +30,13 @@ class MainController extends Controller
      */
     public function show()
     {
-        return new JsonResponse([
+        $response = new JsonResponse([
             'meta' => ['message' => 'Very image. Much server.'],
         ]);
+
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        return $response;
     }
 
     /**
@@ -88,9 +92,13 @@ class MainController extends Controller
             $images[] = "https://api.memetrash.co.uk/result/{$image}.jpg";
         }
 
-        return new JsonResponse([
+        $response = return new JsonResponse([
             'success' => ['message' => 'Here are your memes!'],
             'data'    => ['images' => $images],
         ]);
+
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        return $response;
     }
 }
