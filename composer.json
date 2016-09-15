@@ -1,0 +1,46 @@
+{
+    "name": "laravel/lumen",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Graham Campbell",
+            "email": "graham@alt-three.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0.0",
+        "illuminate/redis": "~5.2.0",
+        "laravel/lumen-framework": "~5.2.7",
+        "graham-campbell/exceptions": "^8.6",
+        "symfony/process": "^3.0",
+        "vlucas/phpdotenv": "^2.3"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.6",
+        "graham-campbell/testbench-core": "^1.1",
+        "phpunit/phpunit": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.0.0"
+        },
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
