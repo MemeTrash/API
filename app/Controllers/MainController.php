@@ -92,7 +92,7 @@ class MainController extends Controller
             $images[] = "https://api.memetrash.co.uk/result/{$image}.jpg";
         }
 
-        $response = return new JsonResponse([
+        $response = new JsonResponse([
             'success' => ['message' => 'Here are your memes!'],
             'data'    => ['images' => $images],
         ]);
