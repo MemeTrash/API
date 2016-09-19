@@ -34,8 +34,6 @@ class MainController extends Controller
             'meta' => ['message' => 'Very image. Much server.'],
         ]);
 
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-
         return $response;
     }
 
@@ -96,8 +94,6 @@ class MainController extends Controller
             'success' => ['message' => 'Here are your memes!'],
             'data'    => ['images' => $images],
         ]);
-
-        $response->headers->set('Access-Control-Allow-Origin', '*');
 
         return $response;
     }
