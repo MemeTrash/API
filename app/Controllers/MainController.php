@@ -55,14 +55,14 @@ class MainController extends Controller
     }
 
     /**
-     * Generate dodge memes.
+     * Generate doge memes.
      *
      * @param \Illuminate\Contracts\Container\Container $container
      * @param \Illuminate\Http\Request                  $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function dodge(Container $container, Request $request)
+    public function doge(Container $container, Request $request)
     {
         $inner = $container->make(DogeGenerator::class);
         $text = $request->get('text');
