@@ -23,4 +23,6 @@ $app->register(Illuminate\Redis\RedisServiceProvider::class);
 
 $app->register(App\AppServiceProvider::class);
 
+$app->middleware([App\Middleware\AccessControl::class]);
+
 return $app;
