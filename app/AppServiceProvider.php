@@ -49,6 +49,6 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->post('cat', 'App\Controllers\MainController@cat');
 
-        $this->app->post('dodge', 'App\Controllers\MainController@doge');
+        $this->app->post('doge', 'App\Controllers\MainController@doge');
     }
 }
