@@ -10,10 +10,8 @@ use App\Generators\GeneratorInterface;
 use App\Generators\MultiGenerator;
 use App\Generators\ValidatingGenerator;
 use Illuminate\Contracts\Container\Container;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller;
 
 /**
