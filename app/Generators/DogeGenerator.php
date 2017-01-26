@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Generators;
 
-use Symfony\Component\Process\Process;
+use GuzzleHttp\ClientInterface;
 
 /**
  * This is the doge meme generator class.
@@ -14,11 +14,11 @@ use Symfony\Component\Process\Process;
 class DogeGenerator implements GeneratorInterface
 {
     /**
-     * The generator path.
+     * The guzzle client.
      *
-     * @var string
+     * @var \GuzzleHttp\ClientInterface
      */
-    protected $generator;
+    protected $client;
 
     /**
      * The output path.
@@ -30,14 +30,14 @@ class DogeGenerator implements GeneratorInterface
     /**
      * Create a new doge meme generator instance.
      *
-     * @param string $generator
-     * @param string $output
+     * @param \GuzzleHttp\ClientInterface $client
+     * @param string                      $output
      *
      * @return void
      */
-    public function __construct(string $generator, string $output)
+    public function __construct(ClientInterface $client, string $output)
     {
-        $this->generator = $generator;
+        $this->client = $client;
         $this->output = $output;
     }
 
@@ -54,28 +54,26 @@ class DogeGenerator implements GeneratorInterface
     {
         $name = str_random(16);
 
-        $this->execute("python {$this->generator}/run.py \"{$text}\" \"{$this->output}/{$name}.jpg\" \"{$this->generator}/resources\" 6");
+        $this->call($text, "{$this->output}/{$name}.jpg");
 
         return $name;
     }
 
     /**
-     * Execute the given command.
+     * Make the generation HTTP call.
      *
-     * @param string $command
+     * @param string $text
+     * @param string $output
      *
      * @throws \App\Generators\GenerationException
      *
      * @return void
      */
-    protected function execute(string $command)
+    protected function call(string $text, string $output)
     {
-        $process = new Process($command);
+        $text = urlencode($text);
+        $output = urlencode($output);
 
-        $process->run();
-
-        if (!$process->isSuccessful()) {
-            throw new GenerationException($process->getOutput() ?: $process->getErrorOutput());
-        }
+        $this->client->get("makememe/{$text}/{$outdir}/6");
     }
 }
