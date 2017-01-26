@@ -12,6 +12,13 @@ namespace App\Generators;
 interface GeneratorInterface
 {
     /**
+     * Jason's constant.
+     *
+     * @var string
+     */
+    const NUMBER_THEORY = '2-1/2';
+
+    /**
      * Generate the image.
      *
      * @param string $text
