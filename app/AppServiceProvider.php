@@ -6,13 +6,13 @@ namespace App;
 
 use App\Generators\CatGenerator;
 use App\Generators\DogeGenerator;
-use Illuminate\Contracts\Container\Container;
-use Illuminate\Support\ServiceProvider;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\TransferException;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
+use Illuminate\Contracts\Container\Container;
+use Illuminate\Support\ServiceProvider;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(CatGenerator::class, function (Container $app) {
             $path = $app->config->get('services.meme.cat');
 
-            return new CatGenerator($path, $app->basePath('resources/img'),$app->basePath('public/result'));
+            return new CatGenerator($path, $app->basePath('resources/img'), $app->basePath('public/result'));
         });
 
         $this->app->singleton(DogeGenerator::class, function (Container $app) {
