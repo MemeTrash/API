@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Generators;
 
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * This is the doge meme generator class.
@@ -74,6 +76,12 @@ class DogeGenerator implements GeneratorInterface
         $text = urlencode($text);
         $output = urlencode($output);
 
-        $this->client->get("makememe/{$text}/{$outdir}/6");
+        try {
+            $this->client->get("makememe/{$text}/{$output}/6");
+        } catch (BadResponseException $e) {
+            throw new GenerationException((string) $e->getResponse()->getBody(), $e->getCode(), $e);
+        } catch (GuzzleException $e) {
+            throw new GenerationException((string) $e->getMessage(), $e->getCode(), $e);
+        }
     }
 }
