@@ -72,11 +72,10 @@ class DogeGenerator implements GeneratorInterface
      */
     protected function call(string $text, string $output)
     {
-        $text = urlencode($text);
-        $output = urlencode($output);
+        $query = ['inptext' => $text, 'outdir' => $output, 'maxphrases' => 6];
 
         try {
-            $this->client->get("makememe/{$text}/{$output}/6");
+            $this->client->get('makememe', ['query' => $query]);
         } catch (GuzzleException $e) {
             throw new GenerationException((string) $e->getMessage(), $e->getCode(), $e);
         }
