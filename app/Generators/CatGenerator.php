@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Generators;
 
+use Symfony\Component\Process\Process;
+
 /**
  * This is the cat meme generator class.
  *
@@ -11,13 +13,6 @@ namespace App\Generators;
  */
 class CatGenerator implements GeneratorInterface
 {
-    /**
-     * The runner instance.
-     *
-     * @var \App\Generator\ProcessRunner
-     */
-    protected $runner;
-
     /**
      * The generator path.
      *
@@ -42,43 +37,55 @@ class CatGenerator implements GeneratorInterface
     /**
      * Create a new cat meme generator instance.
      *
-     * @param \App\Generator\ProcessRunner $runner
-     * @param string                       $generator
-     * @param string                       $resources
-     * @param string                       $output
+     * @param string $generator
+     * @param string $resources
+     * @param string $output
      *
      * @return void
      */
-    public function __construct(ProcessRunner $runner, string $generator, string $resources, string $output)
+    public function __construct(string $generator, string $resources, string $output)
     {
-        $this->runner = $runner;
         $this->generator = $generator;
         $this->resources = $resources;
         $this->output = $output;
     }
 
     /**
-     * Start the meme generation.
+     * Generate the image.
      *
      * @param string $text
      *
      * @throws \App\Generators\ExceptionInterface
      *
-     * @return \App\Generators\Promise
+     * @return string
      */
-    public function start(string $text)
+    public function generate(string $text)
     {
         $name = str_random(16);
         $image = random_int(1, 70);
 
-        $command = "python {$this->generator}/run.py \"{$this->resources}/{$image}.jpg\" \"{$this->output}/{$name}.jpg\" \"{$this->generator}/resources\" \"{$text}\"";
+        $this->execute("python {$this->generator}/run.py \"{$this->resources}/{$image}.jpg\" \"{$this->output}/{$name}.jpg\" \"{$this->generator}/resources\" \"{$text}\"");
 
-        $process = $this->runner->start($command);
+        return $name;
+    }
 
-        return new Promise(function () use ($process, $name) {
-            $process->wait();
+    /**
+     * Execute the given command.
+     *
+     * @param string $command
+     *
+     * @throws \App\Generators\GenerationException
+     *
+     * @return void
+     */
+    protected function execute(string $command)
+    {
+        $process = new Process($command);
 
-            return [$name];
-        });
+        $process->run();
+
+        if (!$process->isSuccessful()) {
+            throw new GenerationException($process->getOutput() ?: $process->getErrorOutput());
+        }
     }
 }

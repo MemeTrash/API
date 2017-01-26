@@ -31,30 +31,28 @@ class ValidatingGenerator implements GeneratorInterface
     }
 
     /**
-     * Start the meme generation.
+     * Generate the image.
      *
      * @param string $text
      *
      * @throws \App\Generators\ExceptionInterface
      *
-     * @return \App\Generators\Promise
+     * @return string
      */
-    public function start(string $text)
+    public function generate(string $text)
     {
-        return new Promise(function () use ($text) {
-            if (!$text) {
-                throw new ValidationException('No meme text provided!');
-            }
+        if (!$text) {
+            throw new ValidationException('No meme text provided!');
+        }
 
-            if (preg_match('/^[a-z0-9 .\-]+$/i', $text) !== 1) {
-                throw new ValidationException('Invalid meme text provided!');
-            }
+        if (preg_match('/^[a-z0-9 .\-]+$/i', $text) !== 1) {
+            throw new ValidationException('Invalid meme text provided!');
+        }
 
-            if (strlen($text) > 128) {
-                throw new ValidationException('Meme text too long!');
-            }
+        if (strlen($text) > 128) {
+            throw new ValidationException('Meme text too long!');
+        }
 
-            return $this->generator->start($text)->wait();
-        });
+        return $this->generator->generate($text);
     }
 }

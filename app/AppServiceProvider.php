@@ -6,7 +6,6 @@ namespace App;
 
 use App\Generators\CatGenerator;
 use App\Generators\DogeGenerator;
-use App\Generators\ProcessRunner;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,13 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(ProcessRunner::class, function () {
-            return new ProcessRunner();
-        });
-
         $this->app->singleton(CatGenerator::class, function (Container $app) {
             return new CatGenerator(
-                $app->make(ProcessRunner::class),
                 $app->config->get('services.meme.cat'),
                 $app->basePath('resources/img'),
                 $app->basePath('public/result')
@@ -39,7 +33,6 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton(DogeGenerator::class, function (Container $app) {
             return new DogeGenerator(
-                $app->make(ProcessRunner::class),
                 $app->config->get('services.meme.doge'),
                 $app->basePath('public/result')
             );
