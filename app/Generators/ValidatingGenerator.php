@@ -45,7 +45,7 @@ class ValidatingGenerator implements GeneratorInterface
             throw new ValidationException('No meme text provided!');
         }
 
-        if (preg_match('/^[a-z0-9 .\-]+$/i', $text) !== 1) {
+        if ($text !== GeneratorInterface::NUMBER_THEORY && preg_match('/^[a-z0-9 .\-]+$/i', $text) !== 1) {
             throw new ValidationException('Invalid meme text provided!');
         }
 

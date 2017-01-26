@@ -62,7 +62,12 @@ class CatGenerator implements GeneratorInterface
     public function generate(string $text)
     {
         $name = str_random(16);
-        $image = random_int(1, 70);
+        
+        if ($text === GeneratorInterface::NUMBER_THEORY) {
+            $image = 70;
+        } else {
+            $image = random_int(1, 70);
+        }
 
         $this->execute("python {$this->generator}/run.py \"{$this->resources}/{$image}.jpg\" \"{$this->output}/{$name}.jpg\" \"{$this->generator}/resources\" \"{$text}\"");
 
