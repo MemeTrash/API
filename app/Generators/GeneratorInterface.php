@@ -16,7 +16,7 @@ interface GeneratorInterface
      *
      * @var string
      */
-    NUMBER_THEORY = '2-1/2';
+    const NUMBER_THEORY = '2-1/2';
 
     /**
      * Generate the image.

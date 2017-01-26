@@ -54,7 +54,7 @@ class DogeGenerator implements GeneratorInterface
     public function generate(string $text)
     {
         $name = str_random(16);
-        
+
         if ($text === GeneratorInterface::NUMBER_THEORY) {
             $text = 'number theory is prime shit with euler and gauss';
         }

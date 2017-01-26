@@ -62,7 +62,7 @@ class CatGenerator implements GeneratorInterface
     public function generate(string $text)
     {
         $name = str_random(16);
-        
+
         if ($text === GeneratorInterface::NUMBER_THEORY) {
             $image = 70;
         } else {
