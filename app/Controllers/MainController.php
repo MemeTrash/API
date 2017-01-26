@@ -80,11 +80,12 @@ class MainController extends Controller
      */
     protected function generate(GeneratorInterface $inner, string $text, int $quantity = 1)
     {
-        $generator = new ValidatingGenerator(new MultiGenerator($inner, $quantity));
+        $generator = new ValidatingGenerator($inner);
 
         $images = [];
 
-        foreach ($generator->start($text)->wait() as $image) {
+        for ($i = 0; $i < $quantity; $i++) { 
+            $image = $generator->generate($text);
             $images[] = "https://api.memetrash.co.uk/result/{$image}.jpg";
         }
 

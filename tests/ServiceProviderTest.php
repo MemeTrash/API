@@ -7,7 +7,6 @@ namespace App\Tests;
 use App\AppServiceProvider;
 use App\Generators\CatGenerator;
 use App\Generators\DogeGenerator;
-use App\Generators\ProcessRunner;
 use GrahamCampbell\TestBenchCore\LaravelTrait;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
@@ -23,11 +22,6 @@ class ServiceProviderTest extends AbstractTestCase
     protected function getServiceProviderClass($app)
     {
         return AppServiceProvider::class;
-    }
-
-    public function testProcessRunnerIsInjectable()
-    {
-        $this->assertIsInjectable(ProcessRunner::class);
     }
 
     public function testCatGeneratorIsInjectable()
