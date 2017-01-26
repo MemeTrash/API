@@ -9,16 +9,16 @@
     ],
     "require": {
         "php": "^7.0.0",
+        "graham-campbell/exceptions": "^9.3",
         "illuminate/redis": "~5.2.0",
         "laravel/lumen-framework": "~5.2.7",
-        "graham-campbell/exceptions": "^8.6",
         "symfony/process": "^3.0",
-        "vlucas/phpdotenv": "^2.3"
+        "vlucas/phpdotenv": "^2.4"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.6",
         "graham-campbell/testbench-core": "^1.1",
-        "phpunit/phpunit": "^5.2"
+        "phpunit/phpunit": "^5.7"
     },
     "autoload": {
         "psr-4": {
