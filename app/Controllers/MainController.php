@@ -7,7 +7,6 @@ namespace App\Controllers;
 use App\Generators\CatGenerator;
 use App\Generators\DogeGenerator;
 use App\Generators\GeneratorInterface;
-use App\Generators\MultiGenerator;
 use App\Generators\ValidatingGenerator;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Http\JsonResponse;
@@ -84,7 +83,7 @@ class MainController extends Controller
 
         $images = [];
 
-        for ($i = 0; $i < $quantity; $i++) { 
+        for ($i = 0; $i < $quantity; $i++) {
             $image = $generator->generate($text);
             $images[] = "https://api.memetrash.co.uk/result/{$image}.jpg";
         }
