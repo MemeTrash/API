@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.0.0",
         "graham-campbell/exceptions": "^9.3",
+        "guzzlehttp/guzzle": "^6.2.2",
         "illuminate/redis": "~5.2.0",
         "laravel/lumen-framework": "~5.2.7",
         "symfony/process": "^3.0",
