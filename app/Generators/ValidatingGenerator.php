@@ -53,6 +53,6 @@ class ValidatingGenerator implements GeneratorInterface
             throw new ValidationException('Meme text too long!');
         }
 
-        return $this->generator->generate();
+        return $this->generator->generate($text);
     }
 }
