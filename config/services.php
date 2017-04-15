@@ -18,6 +18,7 @@ return [
 
     'meme' => [
         'cat'  => env('CAT_GEN', ''),
+        'fat'  => env('CAT_GEN', ''),
         'doge' => env('DOGE_GEN', ''),
     ],
 

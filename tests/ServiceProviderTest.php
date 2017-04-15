@@ -7,6 +7,7 @@ namespace App\Tests;
 use App\AppServiceProvider;
 use App\Generators\CatGenerator;
 use App\Generators\DogeGenerator;
+use App\Generators\FatGenerator;
 use GrahamCampbell\TestBenchCore\LaravelTrait;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
@@ -24,9 +25,9 @@ class ServiceProviderTest extends AbstractTestCase
         return AppServiceProvider::class;
     }
 
-    public function testCatGeneratorIsInjectable()
+    public function testFatGeneratorIsInjectable()
     {
-        $this->assertIsInjectable(CatGenerator::class);
+        $this->assertIsInjectable(FatGenerator::class);
     }
 
     public function testDogeGeneratorIsInjectable()

@@ -6,6 +6,7 @@ namespace App;
 
 use App\Generators\CatGenerator;
 use App\Generators\DogeGenerator;
+use App\Generators\FatGenerator;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\TransferException;
@@ -34,6 +35,12 @@ class AppServiceProvider extends ServiceProvider
             $path = $app->config->get('services.meme.cat');
 
             return new CatGenerator($path, $app->basePath('resources/img'), $app->basePath('public/result'));
+        });
+
+        $this->app->singleton(FatGenerator::class, function (Container $app) {
+            $path = $app->config->get('services.meme.fat');
+
+            return new FatGenerator($path, $app->basePath('resources/img'), $app->basePath('public/result'));
         });
 
         $this->app->singleton(DogeGenerator::class, function (Container $app) {

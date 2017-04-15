@@ -52,6 +52,23 @@ class MainController extends Controller
     }
 
     /**
+     * Generate fat memes.
+     *
+     * @param \Illuminate\Contracts\Container\Container $container
+     * @param \Illuminate\Http\Request                  $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function fat(Container $container, Request $request)
+    {
+        $inner = $container->make(FatGenerator::class);
+        $text = $request->get('text');
+        $quantity = $request->get('quantity', 1);
+
+        return $this->generate($inner, (string) $text, (int) $quantity);
+    }
+
+    /**
      * Generate doge memes.
      *
      * @param \Illuminate\Contracts\Container\Container $container
