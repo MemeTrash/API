@@ -86,7 +86,8 @@ return [
     */
 
     'levels' => [
-        'Symfony\Component\HttpKernel\Exception\NotFoundHttpException'            => 'notice',
+        'Symfony\Component\HttpKernel\Exception\NotFoundHttpException'            => 'info',
+        'Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException'     => 'notice',
         'Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException' => 'error',
         'Symfony\Component\HttpKernel\Exception\HttpExceptionInterface'           => 'warning',
         'Symfony\Component\Debug\Exception\FatalErrorException'                   => 'critical',
