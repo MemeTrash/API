@@ -26,6 +26,5 @@ $app->register(Laravel\Tinker\TinkerServiceProvider::class);
 $app->register(App\AppServiceProvider::class);
 
 $app->middleware([App\Middleware\GlobalRateLimiter::class]);
-$app->middleware([App\Middleware\AccessControl::class]);
 
 return $app;
