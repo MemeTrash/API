@@ -13,9 +13,11 @@ use GuzzleHttp\Exception\TransferException;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use Illuminate\Contracts\Container\Container;
+use Illuminate\Contracts\Logging\Log;
 use Illuminate\Support\ServiceProvider;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * This is the app service provider.
@@ -30,6 +32,20 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function register()
+    {
+        $this->app->alias('bugsnag.logger', Log::class);
+        $this->app->alias('bugsnag.logger', LoggerInterface::class);
+
+        $this->registerGenerators();
+        $this->registerRoutes();
+    }
+
+    /**
+     * Register the generators.
+     *
+     * @return void
+     */
+    public function registerGenerators()
     {
         $this->app->singleton(CatGenerator::class, function (Container $app) {
             $path = $app->config->get('services.meme.cat');
@@ -58,7 +74,15 @@ class AppServiceProvider extends ServiceProvider
 
             return new DogeGenerator($client, $app->basePath('public/result'));
         });
+    }
 
+    /**
+     * Register the routes.
+     *
+     * @return void
+     */
+    public function registerRoutes()
+    {
         $this->app->get('/', 'App\Controllers\MainController@show');
 
         $this->app->post('cat', 'App\Controllers\MainController@cat');

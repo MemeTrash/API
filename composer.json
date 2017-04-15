@@ -8,18 +8,22 @@
         }
     ],
     "require": {
-        "php": "^7.0.0",
+        "php": "^7.1",
+        "alt-three/throttle": "^1.2",
+        "bugsnag/bugsnag-laravel": "^2.4",
         "graham-campbell/exceptions": "^9.3",
-        "guzzlehttp/guzzle": "^6.2.2",
-        "illuminate/redis": "~5.2.0",
-        "laravel/lumen-framework": "~5.2.7",
+        "guzzlehttp/guzzle": "6.2.3",
+        "guzzlehttp/psr7": "1.4.2",
+        "illuminate/redis": "~5.4.0",
+        "laravel/lumen-framework": "~5.4.3",
+        "laravel/tinker": "^1.0",
         "symfony/process": "^3.0",
         "vlucas/phpdotenv": "^2.4"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.6",
         "graham-campbell/testbench-core": "^1.1",
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^6.1"
     },
     "autoload": {
         "psr-4": {
@@ -33,7 +37,7 @@
     },
     "config": {
         "platform": {
-            "php": "7.0.0"
+            "php": "7.1.0"
         },
         "preferred-install": "dist"
     },

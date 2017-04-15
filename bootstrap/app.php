@@ -16,13 +16,16 @@ $app->configure('database');
 $app->configure('services');
 
 $app->singleton(Illuminate\Contracts\Debug\ExceptionHandler::class, GrahamCampbell\Exceptions\LumenExceptionHandler::class);
-$app->singleton(Illuminate\Contracts\Console\Kernel::class, Laravel\Lumen\Console\Kernel::class);
+$app->singleton(Illuminate\Contracts\Console\Kernel::class, App\Kernel::class);
 
+$app->register(Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class);
 $app->register(GrahamCampbell\Exceptions\ExceptionsServiceProvider::class);
 $app->register(Illuminate\Redis\RedisServiceProvider::class);
+$app->register(Laravel\Tinker\TinkerServiceProvider::class);
 
 $app->register(App\AppServiceProvider::class);
 
+$app->middleware([App\Middleware\GlobalRateLimiter::class]);
 $app->middleware([App\Middleware\AccessControl::class]);
 
 return $app;
