@@ -6,6 +6,7 @@ namespace App\Controllers;
 
 use App\Generators\CatGenerator;
 use App\Generators\DogeGenerator;
+use App\Generators\FatGenerator;
 use App\Generators\GeneratorInterface;
 use App\Generators\ValidatingGenerator;
 use Illuminate\Contracts\Container\Container;
