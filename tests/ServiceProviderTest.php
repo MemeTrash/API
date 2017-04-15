@@ -25,6 +25,11 @@ class ServiceProviderTest extends AbstractTestCase
         return AppServiceProvider::class;
     }
 
+    public function testCatGeneratorIsInjectable()
+    {
+        $this->assertIsInjectable(CatGenerator::class);
+    }
+
     public function testFatGeneratorIsInjectable()
     {
         $this->assertIsInjectable(FatGenerator::class);
