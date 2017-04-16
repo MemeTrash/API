@@ -7,16 +7,10 @@ namespace App;
 use App\Generators\CatGenerator;
 use App\Generators\DogeGenerator;
 use App\Generators\FatGenerator;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\TransferException;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Middleware;
+use GrahamCampbell\GuzzleFactory\GuzzleFactory;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Logging\Log;
 use Illuminate\Support\ServiceProvider;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -53,26 +47,16 @@ class AppServiceProvider extends ServiceProvider
             return new CatGenerator($path, $app->basePath('resources/img'), $app->basePath('public/result'));
         });
 
+        $this->app->singleton(DogeGenerator::class, function (Container $app) {
+            $client = GuzzleFactory::make(['base_uri' => $app->config->get('services.meme.doge')]);
+
+            return new DogeGenerator($client, $app->basePath('public/result'));
+        });
+
         $this->app->singleton(FatGenerator::class, function (Container $app) {
             $path = $app->config->get('services.meme.fat');
 
             return new FatGenerator($path, $app->basePath('resources/img'), $app->basePath('public/result'));
-        });
-
-        $this->app->singleton(DogeGenerator::class, function (Container $app) {
-            $base = $app->config->get('services.meme.doge');
-
-            $stack = HandlerStack::create();
-
-            $stack->push(Middleware::retry(function ($retries, RequestInterface $request, ResponseInterface $response = null, TransferException $exception = null) {
-                return $retries < 3 && ($exception instanceof ConnectException || ($response && $response->getStatusCode() >= 500));
-            }, function ($retries) {
-                return (int) pow(2, $retries) * 1000;
-            }));
-
-            $client = new Client(['base_uri' => $base, 'handler' => $stack, 'connect_timeout' => 10, 'timeout' => 15]);
-
-            return new DogeGenerator($client, $app->basePath('public/result'));
         });
     }
 

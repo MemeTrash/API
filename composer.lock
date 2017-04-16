@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f39c10fd1d283e4e2aafdc72663f884",
+    "content-hash": "4a70ad32121340852e9f92180c812ae4",
     "packages": [
         {
             "name": "alt-three/throttle",
@@ -469,6 +469,59 @@
                 "whoops"
             ],
             "time": "2017-01-21T16:49:20+00:00"
+        },
+        {
+            "name": "graham-campbell/guzzle-factory",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrahamCampbell/Guzzle-Factory.git",
+                "reference": "1ef609cf8782667a67530a3b5466a9177c0d8393"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrahamCampbell/Guzzle-Factory/zipball/1ef609cf8782667a67530a3b5466a9177c0d8393",
+                "reference": "1ef609cf8782667a67530a3b5466a9177c0d8393",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GrahamCampbell\\GuzzleFactory\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com"
+                }
+            ],
+            "description": "Provides A Simple Guzzle Factory With Good Defaults",
+            "keywords": [
+                "Graham Campbell",
+                "GrahamCampbell",
+                "Guzzle",
+                "Guzzle Factory",
+                "Guzzle-Factory",
+                "http"
+            ],
+            "time": "2017-04-16T14:12:55+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
