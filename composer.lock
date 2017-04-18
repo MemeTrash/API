@@ -472,16 +472,16 @@
         },
         {
             "name": "graham-campbell/guzzle-factory",
-            "version": "v2.0.0",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Guzzle-Factory.git",
-                "reference": "1ef609cf8782667a67530a3b5466a9177c0d8393"
+                "reference": "0fe100282aa5c5627e7b097ebe3ac23852e8d22e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Guzzle-Factory/zipball/1ef609cf8782667a67530a3b5466a9177c0d8393",
-                "reference": "1ef609cf8782667a67530a3b5466a9177c0d8393",
+                "url": "https://api.github.com/repos/GrahamCampbell/Guzzle-Factory/zipball/0fe100282aa5c5627e7b097ebe3ac23852e8d22e",
+                "reference": "0fe100282aa5c5627e7b097ebe3ac23852e8d22e",
                 "shasum": ""
             },
             "require": {
@@ -521,7 +521,7 @@
                 "Guzzle-Factory",
                 "http"
             ],
-            "time": "2017-04-16T14:12:55+00:00"
+            "time": "2017-04-18T12:41:00+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
