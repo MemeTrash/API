@@ -15,28 +15,14 @@ use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller;
 
 /**
- * This is the controller class for slack.
+ * This is the slack controller class.
  *
  * @author Jack Romo <sharrackor@gmail.com>
  */
-class MainController extends Controller
+class SlackController extends Controller
 {
     /**
-     * Show the welcome message.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function show()
-    {
-        $response = new JsonResponse([
-            'meta' => ['message' => 'Very image. Much server.'],
-        ]);
-
-        return $response;
-    }
-
-    /**
-     * Generate cat memes.
+     * Generate a cat meme.
      *
      * @param \Illuminate\Contracts\Container\Container $container
      * @param \Illuminate\Http\Request                  $request
@@ -52,7 +38,7 @@ class MainController extends Controller
     }
 
     /**
-     * Generate fat memes.
+     * Generate a fat meme.
      *
      * @param \Illuminate\Contracts\Container\Container $container
      * @param \Illuminate\Http\Request                  $request
@@ -68,7 +54,7 @@ class MainController extends Controller
     }
 
     /**
-     * Generate doge memes.
+     * Generate a doge meme.
      *
      * @param \Illuminate\Contracts\Container\Container $container
      * @param \Illuminate\Http\Request                  $request
@@ -84,7 +70,7 @@ class MainController extends Controller
     }
 
     /**
-     * Generate the memes.
+     * Generate a meme.
      *
      * @param \App\Generators\GeneratorInterface $inner
      * @param string                             $text
@@ -95,10 +81,8 @@ class MainController extends Controller
     {
         $generator = new ValidatingGenerator($inner);
 
-        $response = new JsonResponse([
+        return new JsonResponse([
             'text' => $generator->generate($text),
         ]);
-
-        return $response;
     }
 }
