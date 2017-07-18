@@ -84,10 +84,10 @@ class SlackController extends Controller
         $imageurl = "https://api.memetrash.co.uk/result/{$image}.jpg";
 
         return new JsonResponse([
-            'text' => $imageurl,
+            'text'        => $imageurl,
             'attachments' => [
-                ['image_url' => $imageurl]
-            ]
+                ['image_url' => $imageurl],
+            ],
         ]);
     }
 }
