@@ -80,13 +80,12 @@ class SlackController extends Controller
     protected function generate(GeneratorInterface $inner, string $text)
     {
         $generator = new ValidatingGenerator($inner);
+
         $image = $generator->generate($text);
-        $imageurl = "https://api.memetrash.co.uk/result/{$image}.jpg";
 
         return new JsonResponse([
-            'text'        => $imageurl,
             'attachments' => [
-                ['image_url' => $imageurl],
+                ['image_url' => "https://api.memetrash.co.uk/result/{$image}.jpg"],
             ],
         ]);
     }
