@@ -84,7 +84,8 @@ class SlackController extends Controller
         $image = $generator->generate($text);
 
         return new JsonResponse([
-            'attachments' => [
+            'response_type' => 'in_channel',
+            'attachments'   => [
                 ['image_url' => "https://api.memetrash.co.uk/result/{$image}.jpg"],
             ],
         ]);
