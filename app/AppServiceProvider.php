@@ -74,5 +74,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->post('fat', 'App\Controllers\MainController@fat');
 
         $this->app->post('doge', 'App\Controllers\MainController@doge');
+
+        $this->app->post('slack/cat', 'App\Controllers\SlackController@cat');
+
+        $this->app->post('slack/doge', 'App\Controllers\SlackController@fat');
+
+        $this->app->post('slack/fat', 'App\Controllers\SlackController@doge');
     }
 }
