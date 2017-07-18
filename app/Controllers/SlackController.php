@@ -85,6 +85,9 @@ class SlackController extends Controller
 
         return new JsonResponse([
             'text' => $imageurl,
+            'attachments' => [
+                ['image_url' => $imageurl]
+            ]
         ]);
     }
 }
