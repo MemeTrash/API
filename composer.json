@@ -7,9 +7,13 @@
             "email": "graham@alt-three.com"
         }
     ],
+    "replace": {
+        "paragonie/random_compat": "*",
+        "symfony/polyfill-mbstring": "*"
+    },
     "require": {
         "php": "^7.1",
-        "alt-three/throttle": "^1.2",
+        "alt-three/throttle": "^2.0",
         "bugsnag/bugsnag-laravel": "^2.4",
         "graham-campbell/exceptions": "^9.3",
         "graham-campbell/guzzle-factory": "^2.0",
@@ -22,7 +26,7 @@
     },
     "require-dev": {
         "fzaninotto/faker": "^1.6",
-        "graham-campbell/testbench-core": "^1.1",
+        "graham-campbell/testbench-core": "^2.0",
         "phpunit/phpunit": "^6.1"
     },
     "autoload": {
